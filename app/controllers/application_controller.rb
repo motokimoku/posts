@@ -10,4 +10,11 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+  
+  def counts(user)
+    @count_microposts = user.microposts.count
+    @microposts = @user.microposts.order('created_at DESC').page(params[:page])
+    counts(@user)
+  end
+
 end
